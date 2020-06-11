@@ -1,13 +1,13 @@
-package com.book.store.bookstoremanager;
+package com.book.store.guitarstoremanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookstoremanagerApplication {
+public class GuitarStoreManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookstoremanagerApplication.class, args);
+		SpringApplication.run(GuitarStoreManagerApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.book.store.bookstoremanager;
+package com.book.store.guitarstoremanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookstoremanagerApplicationTests {
+class GuitarStoreManagerApplicationTests {
 
 	@Test
 	void contextLoads() {
