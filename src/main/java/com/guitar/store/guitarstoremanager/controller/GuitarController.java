@@ -3,6 +3,7 @@ package com.guitar.store.guitarstoremanager.controller;
 import com.guitar.store.guitarstoremanager.dto.MessageResponseDTO;
 import com.guitar.store.guitarstoremanager.entity.Guitar;
 import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
+import com.guitar.store.guitarstoremanager.service.GuitarService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,18 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/guitars")
 public class GuitarController {
 
-    private GuitarRepository guitarRepository;
+    private GuitarService guitarService;
 
     @Autowired
-    public GuitarController(GuitarRepository guitarRepository) {
-        this.guitarRepository = guitarRepository;
+    public GuitarController(GuitarService guitarService) {
+        this.guitarService = guitarService;
     }
 
     @PostMapping
     public MessageResponseDTO create(@RequestBody Guitar guitar){
-        Guitar saveGuitar = guitarRepository.save(guitar);
-        return MessageResponseDTO.builder().message("Guitar create with ID "
-                +saveGuitar.getId()).build();
+        return guitarService.create(guitar);
     }
 
 }
