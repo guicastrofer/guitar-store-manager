@@ -1,5 +1,6 @@
 package com.guitar.store.guitarstoremanager.controller;
 
+import com.guitar.store.guitarstoremanager.dto.GuitarDTO;
 import com.guitar.store.guitarstoremanager.dto.MessageResponseDTO;
 import com.guitar.store.guitarstoremanager.entity.Guitar;
 import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Data
-@NoArgsConstructor
+import javax.validation.Valid;
+
+
 @RestController
 @RequestMapping("/api/v1/guitars")
 public class GuitarController {
@@ -24,12 +26,12 @@ public class GuitarController {
 
     @Autowired
     public GuitarController(GuitarService guitarService) {
-        this.guitarService = guitarService;
+          this.guitarService = guitarService;
     }
 
     @PostMapping
-    public MessageResponseDTO create(@RequestBody Guitar guitar){
-        return guitarService.create(guitar);
+    public MessageResponseDTO create(@RequestBody @Valid GuitarDTO guitarDTO){
+        return guitarService.create(guitarDTO);
     }
 
 }

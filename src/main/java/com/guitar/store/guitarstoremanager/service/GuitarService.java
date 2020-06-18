@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GuitarService {
+
     private GuitarRepository guitarRepository;
 
     private final GuitarMapper guitarMapper = GuitarMapper.INSTANCE;
@@ -23,8 +24,8 @@ public class GuitarService {
     public MessageResponseDTO create(GuitarDTO guitarDTO){
         Guitar guitarToSave= guitarMapper.toModel(guitarDTO);
 
-        Guitar saveGuitar = guitarRepository.save(guitarToSave);
+        Guitar savedGuitar = guitarRepository.save(guitarToSave);
         return MessageResponseDTO.builder().message("Guitar create with ID "
-                +saveGuitar.getId()).build();
+                +savedGuitar.getId()).build();
     }
 }
