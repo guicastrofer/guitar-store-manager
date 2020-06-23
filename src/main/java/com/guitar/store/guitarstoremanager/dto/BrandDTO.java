@@ -22,6 +22,5 @@ public class BrandDTO {
     private String name;
 
     @NotNull
-    @Size(max=100)
     private Integer serialNumber;
 }

@@ -23,7 +23,7 @@ public class GuitarDTO {
     @Size(max=200)
     private String name;
 
-    @NotBlank
+    @NotNull
     private Integer strings;
 
     @NotNull
@@ -31,5 +31,6 @@ public class GuitarDTO {
 
     @Valid
     @NotNull
-    private Brand brand;
+    private BrandDTO brandDTO;
+
 }

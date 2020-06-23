@@ -25,7 +25,8 @@ public class GuitarService {
         Guitar guitarToSave= guitarMapper.toModel(guitarDTO);
 
         Guitar savedGuitar = guitarRepository.save(guitarToSave);
-        return MessageResponseDTO.builder().message("Guitar create with ID "
+        return MessageResponseDTO.builder()
+                .message("Guitar create with ID "
                 +savedGuitar.getId()).build();
     }
 }

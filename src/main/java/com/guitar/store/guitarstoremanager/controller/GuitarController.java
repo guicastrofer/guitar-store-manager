@@ -26,7 +26,7 @@ public class GuitarController {
 
     @Autowired
     public GuitarController(GuitarService guitarService) {
-          this.guitarService = guitarService;
+        this.guitarService = guitarService;
     }
 
     @PostMapping
