@@ -10,10 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -32,6 +29,11 @@ public class GuitarController {
     @PostMapping
     public MessageResponseDTO create(@RequestBody @Valid GuitarDTO guitarDTO){
         return guitarService.create(guitarDTO);
+    }
+
+    @GetMapping("/{id}")
+    public GuitarDTO findById(@PathVariable Long id){
+        return guitarService.findById(id);
     }
 
 }

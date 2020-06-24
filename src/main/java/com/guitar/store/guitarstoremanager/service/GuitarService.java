@@ -8,6 +8,8 @@ import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class GuitarService {
 
@@ -28,5 +30,10 @@ public class GuitarService {
         return MessageResponseDTO.builder()
                 .message("Guitar create with ID "
                 +savedGuitar.getId()).build();
+    }
+
+    public GuitarDTO findById(Long id) {
+        Optional<Guitar> optionalGuitar = guitarRepository.findById(id);
+        return guitarMapper.toDTO(optionalGuitar.get());
     }
 }
