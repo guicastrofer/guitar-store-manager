@@ -3,6 +3,7 @@ package com.guitar.store.guitarstoremanager.service;
 import com.guitar.store.guitarstoremanager.dto.GuitarDTO;
 import com.guitar.store.guitarstoremanager.dto.MessageResponseDTO;
 import com.guitar.store.guitarstoremanager.entity.Guitar;
+import com.guitar.store.guitarstoremanager.exception.GuitarNotFoundException;
 import com.guitar.store.guitarstoremanager.mapper.GuitarMapper;
 import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,10 @@ public class GuitarService {
                 +savedGuitar.getId()).build();
     }
 
-    public GuitarDTO findById(Long id) {
-        Optional<Guitar> optionalGuitar = guitarRepository.findById(id);
-        return guitarMapper.toDTO(optionalGuitar.get());
+    public GuitarDTO findById(Long id) throws GuitarNotFoundException {
+        Guitar guitar = guitarRepository.findById(id)
+                .orElseThrow(()-> new GuitarNotFoundException(id));
+
+        return guitarMapper.toDTO(guitar);
     }
 }

@@ -3,6 +3,7 @@ package com.guitar.store.guitarstoremanager.controller;
 import com.guitar.store.guitarstoremanager.dto.GuitarDTO;
 import com.guitar.store.guitarstoremanager.dto.MessageResponseDTO;
 import com.guitar.store.guitarstoremanager.entity.Guitar;
+import com.guitar.store.guitarstoremanager.exception.GuitarNotFoundException;
 import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
 import com.guitar.store.guitarstoremanager.service.GuitarService;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class GuitarController {
     }
 
     @GetMapping("/{id}")
-    public GuitarDTO findById(@PathVariable Long id){
+    public GuitarDTO findById(@PathVariable Long id) throws GuitarNotFoundException {
         return guitarService.findById(id);
     }
 
