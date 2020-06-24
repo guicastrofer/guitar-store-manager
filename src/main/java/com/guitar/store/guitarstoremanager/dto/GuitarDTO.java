@@ -19,7 +19,7 @@ public class GuitarDTO {
 
     private Long id;
 
-    @NotNull
+    @NotBlank
     @Size(max=200)
     private String name;
 
@@ -31,6 +31,6 @@ public class GuitarDTO {
 
     @Valid
     @NotNull
-    private BrandDTO brandDTO;
+    private BrandDTO brand;
 
 }

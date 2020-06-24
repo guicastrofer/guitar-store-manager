@@ -20,7 +20,7 @@ public class GuitarUtils {
                 .name(faker.book().title())
                 .strings(faker.number().numberBetween(0,12))
                 .year(faker.number().numberBetween(1900l,2020l))
-                .brandDTO(createFakeBrandDTO())
+                .brand(createFakeBrandDTO())
                 .build();
     }
 
@@ -40,7 +40,7 @@ public class GuitarUtils {
                 .name(guitarDTO.getName())
                 .strings(guitarDTO.getStrings())
                 .year(guitarDTO.getYear())
-                .brand(createFakeBrandFrom(guitarDTO.getBrandDTO()))
+                .brand(createFakeBrandFrom(guitarDTO.getBrand()))
                 .build();
     }
 

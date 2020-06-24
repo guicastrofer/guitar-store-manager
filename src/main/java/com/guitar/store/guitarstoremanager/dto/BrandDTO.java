@@ -17,7 +17,7 @@ public class BrandDTO {
 
     private Long id;
 
-    @NotNull
+    @NotBlank
     @Size(max=200)
     private String name;
 
