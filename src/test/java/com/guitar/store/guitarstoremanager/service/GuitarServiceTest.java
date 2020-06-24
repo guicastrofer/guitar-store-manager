@@ -15,6 +15,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class GuitarServiceTest {
 
@@ -31,5 +35,15 @@ public class GuitarServiceTest {
         GuitarDTO guitarDTO = guitarService.findById(expectedFoundGuitar.getId());
         Assertions.assertEquals(expectedFoundGuitar.getName(),guitarDTO.getName());
         Assertions.assertEquals(expectedFoundGuitar.getStrings(),guitarDTO.getStrings());
+    }
+
+    @Test
+    void whenGivenUnexistingIdThenNotFindThrowAnException() throws GuitarNotFoundException {
+        var invalidId = 10L;
+
+        when(guitarRepository.findById(invalidId))
+                .thenReturn(Optional.ofNullable(any(Guitar.class)));
+
+        assertThrows(GuitarNotFoundException.class, () ->guitarService.findById(invalidId));
     }
 }

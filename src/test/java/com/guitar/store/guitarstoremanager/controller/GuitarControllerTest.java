@@ -61,4 +61,5 @@ public class GuitarControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.message", Is.is(expectedMessageResponse.getMessage())));
     }
+
 }
