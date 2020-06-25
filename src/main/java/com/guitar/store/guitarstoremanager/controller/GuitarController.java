@@ -2,15 +2,9 @@ package com.guitar.store.guitarstoremanager.controller;
 
 import com.guitar.store.guitarstoremanager.dto.GuitarDTO;
 import com.guitar.store.guitarstoremanager.dto.MessageResponseDTO;
-import com.guitar.store.guitarstoremanager.entity.Guitar;
 import com.guitar.store.guitarstoremanager.exception.GuitarNotFoundException;
-import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
 import com.guitar.store.guitarstoremanager.service.GuitarService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,6 +29,16 @@ public class GuitarController {
     @GetMapping("/{id}")
     public GuitarDTO findById(@PathVariable Long id) throws GuitarNotFoundException {
         return guitarService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public MessageResponseDTO delete(@PathVariable Long id) throws GuitarNotFoundException {
+        GuitarDTO guitar = guitarService.findById(id);
+        if(guitar!=null){
+            return guitarService.delete(guitar,id);
+        } else{
+            throw new GuitarNotFoundException(id);
+        }
     }
 
 }

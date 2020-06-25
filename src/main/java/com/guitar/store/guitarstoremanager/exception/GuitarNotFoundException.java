@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class GuitarNotFoundException extends Exception {
 
     public GuitarNotFoundException(Long id) {
-        super(String.format("Guitar with Id not found", id));
+        super(String.format("Guitar with Id "+id+" not found", id));
     }
 }

@@ -9,8 +9,6 @@ import com.guitar.store.guitarstoremanager.repository.GuitarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class GuitarService {
 
@@ -38,5 +36,10 @@ public class GuitarService {
                 .orElseThrow(()-> new GuitarNotFoundException(id));
 
         return guitarMapper.toDTO(guitar);
+    }
+
+    public MessageResponseDTO delete(GuitarDTO guitarDTO, Long id) {
+        guitarRepository.deleteById(id);
+        return MessageResponseDTO.builder().message("Guitar deleted with ID "+guitarDTO.getId()).build();
     }
 }
