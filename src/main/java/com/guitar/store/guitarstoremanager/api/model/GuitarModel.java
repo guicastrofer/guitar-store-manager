@@ -1,19 +1,20 @@
-package com.guitar.store.guitarstoremanager.dto;
+package com.guitar.store.guitarstoremanager.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class BrandDTO {
+@NoArgsConstructor
+public class GuitarModel {
 
     private Long id;
 
@@ -22,5 +23,13 @@ public class BrandDTO {
     private String name;
 
     @NotNull
-    private Integer serialNumber;
+    private Integer strings;
+
+    @NotNull
+    private Long year;
+
+    @Valid
+    @NotNull
+    private BrandDTO brand;
+
 }

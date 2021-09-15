@@ -1,8 +1,8 @@
 package com.guitar.store.guitarstoremanager.utils;
 
 import com.github.javafaker.Faker;
-import com.guitar.store.guitarstoremanager.dto.BrandDTO;
-import com.guitar.store.guitarstoremanager.entity.Brand;
+import com.guitar.store.guitarstoremanager.api.model.BrandDTO;
+import com.guitar.store.guitarstoremanager.domain.entity.Brand;
 
 public class BrandUtils {
 

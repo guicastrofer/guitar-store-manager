@@ -1,30 +1,27 @@
-package com.guitar.store.guitarstoremanager.entity;
+package com.guitar.store.guitarstoremanager.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Guitar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="NM_GUITAR",nullable = false)
+    @NotNull
     private String name;
 
-    @Column(name="NB_STRINGS",nullable = false)
+    @NotNull
     private Integer strings;
 
-    @Column(name="YEAR",nullable = false)
+    @NotNull
     private Long year;
 
     //Lazy allows performance a apply a inner join and 3 operations below at the same time.
