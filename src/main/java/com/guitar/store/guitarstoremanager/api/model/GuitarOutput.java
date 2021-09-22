@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GuitarModel {
+public class GuitarOutput {
 
     private Long id;
 

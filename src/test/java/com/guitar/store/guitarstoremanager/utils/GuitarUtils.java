@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.javafaker.Faker;
-import com.guitar.store.guitarstoremanager.api.model.GuitarModel;
+import com.guitar.store.guitarstoremanager.api.model.GuitarOutput;
 import com.guitar.store.guitarstoremanager.domain.entity.Guitar;
 
 import static com.guitar.store.guitarstoremanager.utils.BrandUtils.*;
@@ -14,8 +14,8 @@ public class GuitarUtils {
 
     private static final Faker faker = Faker.instance();
 
-    public static GuitarModel createFakeGuitarDTO() {
-        return GuitarModel.builder()
+    public static GuitarOutput createFakeGuitarDTO() {
+        return GuitarOutput.builder()
                 .id(faker.number().randomNumber())
                 .name(faker.book().title())
                 .strings(faker.number().numberBetween(0,12))
@@ -34,7 +34,7 @@ public class GuitarUtils {
                 .build();
     }
 
-    public static Guitar createFakeGuitarFrom(GuitarModel guitarModel) {
+    public static Guitar createFakeGuitarFrom(GuitarOutput guitarModel) {
         return Guitar.builder()
                 .id(guitarModel.getId())
                 .name(guitarModel.getName())
@@ -44,7 +44,7 @@ public class GuitarUtils {
                 .build();
     }
 
-    public static String asJsonString(GuitarModel guitarModel) {
+    public static String asJsonString(GuitarOutput guitarModel) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

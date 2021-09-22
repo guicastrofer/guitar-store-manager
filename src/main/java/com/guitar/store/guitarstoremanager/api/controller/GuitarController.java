@@ -1,7 +1,7 @@
 package com.guitar.store.guitarstoremanager.api.controller;
 
 import com.guitar.store.guitarstoremanager.api.model.GuitarInput;
-import com.guitar.store.guitarstoremanager.api.model.GuitarModel;
+import com.guitar.store.guitarstoremanager.api.model.GuitarOutput;
 import com.guitar.store.guitarstoremanager.domain.entity.Guitar;
 import com.guitar.store.guitarstoremanager.domain.exception.GuitarNotFoundException;
 import com.guitar.store.guitarstoremanager.domain.service.GuitarService;
@@ -30,7 +30,7 @@ public class GuitarController {
     }
 
     @GetMapping("/{id}")
-    public GuitarModel findById(@PathVariable Long id) throws GuitarNotFoundException {
+    public GuitarOutput findById(@PathVariable Long id) throws GuitarNotFoundException {
         return guitarService.findById(id);
     }
 

@@ -10,6 +10,8 @@ import org.hibernate.validator.constraints.UniqueElements;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Brand {
 
     @Id
@@ -17,11 +19,11 @@ public class Brand {
     private Long id;
 
     @NotNull
-    @UniqueElements
+    @Column(unique = true)
     private String name;
 
     @NotNull
-    @UniqueElements
+    @Column(unique = true)
     private Integer serialNumber;
 
 

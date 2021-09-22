@@ -1,6 +1,6 @@
 package com.guitar.store.guitarstoremanager.domain.service;
 
-import com.guitar.store.guitarstoremanager.api.model.GuitarModel;
+import com.guitar.store.guitarstoremanager.api.model.GuitarOutput;
 import com.guitar.store.guitarstoremanager.domain.entity.Guitar;
 import com.guitar.store.guitarstoremanager.domain.exception.GuitarNotFoundException;
 import com.guitar.store.guitarstoremanager.domain.repository.GuitarRepository;
@@ -32,7 +32,7 @@ public class GuitarServiceTest {
     void whenGivenExistingIdThenReturnThisGuitar() throws GuitarNotFoundException {
         Guitar expectedFoundGuitar = GuitarUtils.createFakeGuitar();
         Mockito.when(guitarRepository.findById(expectedFoundGuitar.getId())).thenReturn(Optional.of(expectedFoundGuitar));
-        GuitarModel guitarModel = guitarService.findById(expectedFoundGuitar.getId());
+        GuitarOutput guitarModel = guitarService.findById(expectedFoundGuitar.getId());
         Assertions.assertEquals(expectedFoundGuitar.getName(), guitarModel.getName());
         Assertions.assertEquals(expectedFoundGuitar.getStrings(), guitarModel.getStrings());
     }

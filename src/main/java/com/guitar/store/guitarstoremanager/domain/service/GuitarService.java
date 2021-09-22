@@ -1,7 +1,7 @@
 package com.guitar.store.guitarstoremanager.domain.service;
 
 import com.guitar.store.guitarstoremanager.api.model.GuitarInput;
-import com.guitar.store.guitarstoremanager.api.model.GuitarModel;
+import com.guitar.store.guitarstoremanager.api.model.GuitarOutput;
 import com.guitar.store.guitarstoremanager.domain.entity.Guitar;
 import com.guitar.store.guitarstoremanager.domain.exception.GuitarNotFoundException;
 import com.guitar.store.guitarstoremanager.domain.repository.GuitarRepository;
@@ -26,7 +26,7 @@ public class GuitarService {
         return guitarRepository.save(toEntity(guitarInput));
     }
 
-    public GuitarModel findById(Long id) {
+    public GuitarOutput findById(Long id) {
         Guitar guitar =  guitarRepository.findById(id)
                 .orElseThrow(()-> new GuitarNotFoundException(id));
         return toModel(guitar);
@@ -37,8 +37,8 @@ public class GuitarService {
         guitarRepository.deleteById(id);
     }
 
-    public GuitarModel toModel(Guitar guitar) {
-        return modelMapper.map(guitar, GuitarModel.class);
+    public GuitarOutput toModel(Guitar guitar) {
+        return modelMapper.map(guitar, GuitarOutput.class);
     }
 
     public Guitar toEntity(GuitarInput guitarInput) {
